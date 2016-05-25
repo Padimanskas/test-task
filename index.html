@@ -1,97 +1,46 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Test task</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="./node_modules/angular/angular.min.js"></script>
-  <script src="./node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
-  <script src="./node_modules/angular-xeditable/dist/js/xeditable.min.js"></script>
-  <script src="app.js"></script>
-  <script src="modules/blackboard.js"></script>
-  <script src="modules/uploadform.js"></script>
-</head>
-
-<body ng-app="app">
-  <!--
-  <div id="main" ng-controller="tagsCtrl">
-    {{tags.length}}
-<div ng-controller="uploadCtrl">
-    <div ngf-drop ngf-select ng-model="file" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ngf-pattern="'image/*'">Drop image here</div>
-    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-        Files:
-    <ul>
-        <li style="font:smaller">{{file.name}} {{file.$error}} {{file.$errorParam}}</li>
-    </ul>
-    Upload Log:
-    <pre>{{log}}</pre>
-</div>
-
-    <ul id="nav" sidebar>
-      <li ng-repeat="tag in tags" ng-class="{'active-item':tag.active}" ng-click="toggle(tag)">
-        <a href="#" editable-textarea="tag.text">{{ tag.text || 'Please edit description of this pointer' }}</a>
-      </li>
-    </ul>
-    
-    <div id="content" ng-click="onClick($event)" ng-style="setBackground()" blackboard>
-      <div class="tag" ng-style="tag" ng-class="{'active-tag':tag.active}" ng-repeat="tag in tags" ng-click="toggle(tag)"></div>
-    </div>
-    
-  </div>
-
-
--->
-
-
-
-
-
-
-
-  <div id="wrapper" ng-controller="tagsCtrl">
-  <div id="dashboard">
-    <div class="item"></div>
-    <div class="item"></div>
-    <div class="item"></div>
-    <div class="item"></div>
-
-  </div>
-  <div id="mainspace">
-    <div id="header">
-
-      <div ng-controller="uploadCtrl" ngf-drop  ng-model="file" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ngf-pattern="'image/*'">
-        <img src="img/cloud.png" alt="">&nbsp;
-        <span>Drop or</span>&nbsp;<a ng-model="file" ngf-select href="">browse...</a>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test task</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+    <script src="./node_modules/angular-xeditable/dist/js/xeditable.min.js"></script>
+    <script src="app.js"></script>
+    <script src="modules/blackboard.js"></script>
+    <script src="modules/uploadform.js"></script>
+  </head>
+  <body ng-app="app">
+    <div id="wrapper" ng-controller="tagsCtrl">
+      <div id="dashboard">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
       </div>
-
-
-      <input type="text" placeholder="Search" />
-      <div id="login"></div>
-    </div>
-
-      <div id="imageboard-wrapper">
-
-
-        <div id="imageboard" ng-click="onClick($event)" ng-style="setBackground()" blackboard>
-          <div ng-init="deactiveTags(); tag.active = true" ng-style="tag" ng-class="tag.active ? 'active-tag' : 'tag'" ng-repeat="tag in tags" ng-click="toggle(tag)"></div>
+      <div id="mainspace">
+        <div id="header">
+          <div ng-controller="uploadCtrl" ngf-drop  ng-model="file" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ngf-pattern="'image/*'">
+            <img src="img/cloud.png" alt="">&nbsp;
+            <span>Drop or</span>&nbsp;<a ng-model="file" ngf-select href="">browse...</a>
+          </div>
+          <input type="text" ng-model="searchTag" placeholder="Search" />
+          <div id="login"></div>
         </div>
-
-
-
-        <div id="list" sidebar>
-          <div class="item" ng-repeat="tag in tags" ng-class="{'active-item':tag.active}" ng-click="toggle(tag)"> <div></div> <span editable-textarea="tag.text">{{ tag.text || 'Please edit description of this pointer' }}</span> </div>
+        <div id="imageboard-wrapper">
+          <div id="imageboard" ng-click="onClick($event)" ng-style="setBackground()" blackboard>
+            <div ng-init="deactiveTags(); tag.active = true" ng-style="tag" ng-class="tag.active ? 'active-tag' : 'tag'" ng-repeat="tag in tags" ng-click="toggle(tag)"></div>
+          </div>
+          <div id="list" sidebar>
+            <div class="item" ng-repeat="tag in tags | filter: searchTag" ng-class="{'active-item':tag.active}" ng-click="toggle(tag)">
+              <div></div>
+              <span editable-textarea="tag.text">{{ tag.text || 'Please edit description this marker' }}</span> 
+            </div>
+          </div>
         </div>
-
-
-
       </div>
-
-
-
-  </div>
-</div>
-</body>
-
+    </div>
+  </body>
 </html>
