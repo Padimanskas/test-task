@@ -9,7 +9,7 @@ $ bower install
 ```
 $ gulp
 ```
-and then file server
+and then run file server
 ```
 $ node server
 ```
