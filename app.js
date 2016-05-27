@@ -1,7 +1,7 @@
 (function(angular) {
   'use strict';
 
-  angular.module('app', ['xeditable' ,'app.blackboard', 'app.upload']).
+  angular.module('app', ['xeditable' ,'app.whiteboard', 'app.upload']).
 
   controller('tagsCtrl', function($scope) {
     $scope.tags = [],
@@ -34,7 +34,6 @@
     $scope.addTag(300, 300);
     $scope.addTag(500, 150);
     $scope.addTag(330, 170);
-    $scope.addTag(350, 10);
 
   });
 

@@ -1,7 +1,7 @@
 (function (angular) {
   'use strict';
 
-  angular.module('app.blackboard', []).
+  angular.module('app.whiteboard', []).
 
   directive('blackboard', function () {
     return {
