@@ -6,10 +6,10 @@ $ npm install
 ```bash
 $ bower install
 ```
-```
-$ gulp
-```
-and then run file server
+and then run file server and gulp task manager
 ```
 $ node server
+```
+```
+$ gulp
 ```
